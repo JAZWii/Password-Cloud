@@ -1,39 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
-import 'LoginWidget.dart';
-import 'SignUpPage.dart';
+import 'LoginPage.dart';
+import 'package:password_cloud/Widgets/SignUpWidget.dart';
 
-class LoginPage extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   @override
-  _LoginPage createState() => new _LoginPage();
+  _SignUpPage createState() => new _SignUpPage();
 }
 
-class _LoginPage extends State<LoginPage> {
-
-  bool _isSelected = false;
-
-  void _radio() {
-    setState(() {
-      _isSelected = !_isSelected;
-    });
-  }
-
-  Widget radioButton(bool isSelected) => Container(
-    width: 16.0,
-    height: 16.0,
-    padding: EdgeInsets.all(2.0),
-    decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(width: 2.0, color: Colors.black)),
-    child: isSelected
-        ? Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration:
-      BoxDecoration(shape: BoxShape.circle, color: Colors.black),
-    )
-        : Container(),
-  );
+class _SignUpPage extends State<SignUpPage> {
 
   Widget horizontalLine() => Padding(
     padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -48,7 +23,7 @@ class _LoginPage extends State<LoginPage> {
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
     ScreenUtil.instance =
-        ScreenUtil(width: 750, height: 1334, allowFontScaling: true);
+        ScreenUtil(width: 750, height: 1300, allowFontScaling: true);
     return new Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: true,
@@ -91,37 +66,22 @@ class _LoginPage extends State<LoginPage> {
                     ],
                   ),
 
-                  //Login Box
+                  //Sign up Box
                   SizedBox(
-                    height: ScreenUtil.getInstance().setHeight(250),
+                    height: ScreenUtil.getInstance().setHeight(50),
                   ),
-                  LoginWidget(),
+                  SignUpWidget(),
 
-                  //login buttons
-                  SizedBox(height: ScreenUtil.getInstance().setHeight(40)),
+                  //
+                  SizedBox(
+                    height: ScreenUtil.getInstance().setHeight(50),
+                  ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          SizedBox(
-                            width: 12.0,
-                          ),
-                          GestureDetector(
-                            onTap: _radio,
-                            child: radioButton(_isSelected),
-                          ),
-                          SizedBox(
-                            width: 8.0,
-                          ),
-                          Text("Remember me",
-                              style: TextStyle(
-                                  fontSize: 12, fontFamily: "Poppins-Medium"))
-                        ],
-                      ),
                       InkWell(
                         child: Container(
-                          width: ScreenUtil.getInstance().setWidth(330),
+                          width: ScreenUtil.getInstance().setWidth(600),
                           height: ScreenUtil.getInstance().setHeight(100),
                           decoration: BoxDecoration(
                               gradient: LinearGradient(colors: [
@@ -140,7 +100,7 @@ class _LoginPage extends State<LoginPage> {
                             child: InkWell(
                               onTap: () {},
                               child: Center(
-                                child: Text("SIGN IN",
+                                child: Text("SIGN UP",
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: "Poppins-Bold",
@@ -155,31 +115,31 @@ class _LoginPage extends State<LoginPage> {
                   ),
 
                   //Sign up
-                  SizedBox(
-                    height: ScreenUtil.getInstance().setHeight(80),
-                  ),
+                  SizedBox(height: ScreenUtil.getInstance().setHeight(40)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "New User? ",
+                        "Already Have an Account? ",
                         style: TextStyle(fontFamily: "Poppins-Medium"),
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignUpPage()),
-                        );
-                          },
-                        child: Text("SignUp",
+                          Navigator.pop(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignUpPage()),
+                          );
+                        },
+                        child: Text("Login",
                             style: TextStyle(
                                 color: Color(0xFF5d74e3),
                                 fontFamily: "Poppins-Bold")),
                       )
                     ],
-                  )
-                ],
+                  ),
+                  SizedBox(height: ScreenUtil.getInstance().setHeight(40)),
+
+    ],
               ),
             ),
           )
