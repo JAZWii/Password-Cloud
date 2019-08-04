@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
-import 'LoginPage.dart';
+import 'SignInPage.dart';
 import 'package:password_cloud/Widgets/SignUpWidget.dart';
 
 class SignUpPage extends StatefulWidget {

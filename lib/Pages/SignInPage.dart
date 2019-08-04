@@ -4,12 +4,12 @@ import 'package:password_cloud/Widgets/LoginWidget.dart';
 import 'ServicesPage.dart';
 import 'SignUpPage.dart';
 
-class LoginPage extends StatefulWidget {
+class SignInPage extends StatefulWidget {
   @override
-  _LoginPage createState() => new _LoginPage();
+  _SignInPage createState() => new _SignInPage();
 }
 
-class _LoginPage extends State<LoginPage> {
+class _SignInPage extends State<SignInPage> {
 
   bool _isSelected = false;
 

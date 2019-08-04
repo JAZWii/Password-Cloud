@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
-import 'package:password_cloud/Widgets/AddressListViewWidget.dart';
+import 'package:password_cloud/Data/Pojo/ClassData/Login.dart';
 import 'package:password_cloud/Widgets/LoginListViewWidget.dart';
 
-class AddressesPage extends StatefulWidget {
-  @override
-  _AddressesPage createState() => new _AddressesPage();
+class UserLoginsPage extends StatefulWidget {
+
+  _UserLoginsPage createState() => new _UserLoginsPage();
 }
 
-class _AddressesPage extends State<AddressesPage> {
+class _UserLoginsPage extends State<UserLoginsPage> {
 
   Widget horizontalLine() =>
       Padding(
@@ -45,7 +45,7 @@ class _AddressesPage extends State<AddressesPage> {
                   Image.asset("assets/image_02.png")
                 ],
               ),
-              new AddressListViewWidget(),
+              new LoginListViewWidget(),
             ]
         )
     );

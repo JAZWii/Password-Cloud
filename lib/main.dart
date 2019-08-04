@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
-import 'Pages/LoginPage.dart';
+import 'Pages/SignInPage.dart';
 
 void main() => runApp(MaterialApp(
   home: MyApp(),
@@ -18,6 +18,6 @@ class _MyAppState extends State<MyApp> {
     ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1334, allowFontScaling: true);
-    return new LoginPage();
+    return new SignInPage();
   }
 }

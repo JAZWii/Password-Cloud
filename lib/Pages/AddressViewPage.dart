@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
-import 'package:password_cloud/Widgets/AddressListViewWidget.dart';
+import 'package:password_cloud/Data/Pojo/ClassData/Address.dart';
 import 'package:password_cloud/Widgets/LoginListViewWidget.dart';
 
-class AddressesPage extends StatefulWidget {
+class AddressViewPage extends StatefulWidget {
+  final Address address;
   @override
-  _AddressesPage createState() => new _AddressesPage();
+  AddressViewPage({Key key, @required this.address}) : super(key: key);
+
+  @override
+  _AddressViewPage createState() => new _AddressViewPage();
 }
 
-class _AddressesPage extends State<AddressesPage> {
+class _AddressViewPage extends State<AddressViewPage> {
 
   Widget horizontalLine() =>
       Padding(
@@ -30,23 +34,8 @@ class _AddressesPage extends State<AddressesPage> {
         backgroundColor: Colors.white,
         resizeToAvoidBottomPadding: true,
         body: Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(top: 20.0),
-                    child: Image.asset("assets/image_01.png"),
-                  ),
-                  Expanded(
-                    child: Container(),
-                  ),
-                  Image.asset("assets/image_02.png")
-                ],
-              ),
-              new AddressListViewWidget(),
-            ]
+
+
         )
     );
   }
