@@ -7,7 +7,10 @@ class Login {
   String _password;
   DateTime _createDate;
 
-  Login(int id, String loginName, String website, String email, String username, String password, DateTime createDate) {
+
+  Login();
+
+  Login.fromList(int id, String loginName, String website, String email, String username, String password, DateTime createDate) {
     this._id = id;
     this._loginName = loginName;
     this._website = website;

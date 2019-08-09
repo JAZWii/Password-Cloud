@@ -3,12 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
 import 'package:password_cloud/Data/Pojo/ClassData/Login.dart';
 import 'package:password_cloud/Widgets/LoginListViewWidget.dart';
 
-class UserLoginsPage extends StatefulWidget {
+import 'LoginEditPage.dart';
 
-  _UserLoginsPage createState() => new _UserLoginsPage();
+class LoginsPage extends StatefulWidget {
+
+  _LoginsPage createState() => new _LoginsPage();
 }
 
-class _UserLoginsPage extends State<UserLoginsPage> {
+class _LoginsPage extends State<LoginsPage> {
 
   Widget horizontalLine() =>
       Padding(
@@ -27,6 +29,14 @@ class _UserLoginsPage extends State<UserLoginsPage> {
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1300, allowFontScaling: true);
     return new Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginEditPage(login: new Login())));
+          },
+          child: Icon(Icons.add),
+        ),
         backgroundColor: Colors.white,
         resizeToAvoidBottomPadding: true,
         body: Stack(

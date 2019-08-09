@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
+import 'package:password_cloud/Data/Pojo/ClassData/Address.dart';
 import 'package:password_cloud/Widgets/AddressListViewWidget.dart';
-import 'package:password_cloud/Widgets/LoginListViewWidget.dart';
+
+import 'AddressEditPage.dart';
 
 class AddressesPage extends StatefulWidget {
   @override
@@ -27,6 +29,14 @@ class _AddressesPage extends State<AddressesPage> {
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1300, allowFontScaling: true);
     return new Scaffold(
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddressEditPage(address: new Address())));
+                  },
+          child: Icon(Icons.add),
+        ),
         backgroundColor: Colors.white,
         resizeToAvoidBottomPadding: true,
         body: Stack(

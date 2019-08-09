@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
-import 'package:password_cloud/Widgets/SignUpWidget.dart';
+import 'package:password_cloud/Data/Pojo/ClassData/Login.dart';
+import 'package:password_cloud/Widgets/LoginEditWidget.dart';
 
-class SignUpPage extends StatefulWidget {
+class LoginEditPage extends StatelessWidget {
+  final Login login;
   @override
-  _SignUpPage createState() => new _SignUpPage();
-}
+  LoginEditPage({Key key, @required this.login}) : super(key: key);
 
-class _SignUpPage extends State<SignUpPage> {
-
-  Widget horizontalLine() => Padding(
-    padding: EdgeInsets.symmetric(horizontal: 16.0),
-    child: Container(
-      width: ScreenUtil.getInstance().setWidth(120),
-      height: 1.0,
-      color: Colors.black26.withOpacity(.2),
-    ),
-  );
+  Widget horizontalLine() =>
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        child: Container(
+          width: ScreenUtil.getInstance().setWidth(120),
+          height: 1.0,
+          color: Colors.black26.withOpacity(.2),
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+    ScreenUtil.instance = ScreenUtil.getInstance()
+      ..init(context);
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1300, allowFontScaling: true);
     return new Scaffold(
@@ -64,12 +65,8 @@ class _SignUpPage extends State<SignUpPage> {
                               fontWeight: FontWeight.bold))
                     ],
                   ),
-
-                  //Sign up Box
-                  SizedBox(
-                    height: ScreenUtil.getInstance().setHeight(50),
-                  ),
-                  SignUpWidget(),
+                  SizedBox(height: ScreenUtil.getInstance().setHeight(50)),
+                  LoginEditWidget(login: this.login),
 
                   //
                   SizedBox(
@@ -99,7 +96,7 @@ class _SignUpPage extends State<SignUpPage> {
                             child: InkWell(
                               onTap: () {},
                               child: Center(
-                                child: Text("SIGN UP",
+                                child: Text((this.login.id == null)? "CREATE LOGIN":"MODIFY LOGIN",
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: "Poppins-Bold",
@@ -112,33 +109,8 @@ class _SignUpPage extends State<SignUpPage> {
                       )
                     ],
                   ),
-
-                  //Sign up
                   SizedBox(height: ScreenUtil.getInstance().setHeight(40)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "Already Have an Account? ",
-                        style: TextStyle(fontFamily: "Poppins-Medium"),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(
-                            context,
-                            MaterialPageRoute(builder: (context) => SignUpPage()),
-                          );
-                        },
-                        child: Text("Login",
-                            style: TextStyle(
-                                color: Color(0xFF5d74e3),
-                                fontFamily: "Poppins-Bold")),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: ScreenUtil.getInstance().setHeight(40)),
-
-    ],
+                ],
               ),
             ),
           )

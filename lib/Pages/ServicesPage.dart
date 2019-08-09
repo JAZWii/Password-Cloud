@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
 import 'AddressesPage.dart';
-import 'UserLoginsPage.dart';
+import 'LoginsPage.dart';
 
 class ServicesPage extends StatefulWidget {
   @override
@@ -93,7 +93,7 @@ class _ServicesPage extends State<ServicesPage> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => UserLoginsPage()),
+                                  MaterialPageRoute(builder: (context) => LoginsPage()),
                                 );
                               },
                               child: Center(

@@ -12,7 +12,9 @@ class Address {
   DateTime _createDate;
 
 
-  Address(int id,String addressName, String fullName, String address1, String address2, String city, String state, String zip, String phone, String country, DateTime createDate) {
+  Address();
+
+  Address.fromList(int id,String addressName, String fullName, String address1, String address2, String city, String state, String zip, String phone, String country, DateTime createDate) {
     this._id = id;
     this._addressName = addressName;
     this._fullName = fullName;
