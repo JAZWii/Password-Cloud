@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
 import 'package:password_cloud/Data/Pojo/ClassData/Address.dart';
 import 'package:password_cloud/Widgets/AddressEditWidget.dart';
+import 'package:password_cloud/Widgets/Background.dart';
 
 class AddressEditPage extends StatelessWidget {
   final Address address;
@@ -26,27 +27,19 @@ class AddressEditPage extends StatelessWidget {
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1300, allowFontScaling: true);
     return new Scaffold(
+      appBar: AppBar(
+        title: const Text('Address Info'),
+        backgroundColor:   Color(0xFFFD7267),
+      ),
       backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: true,
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 20.0),
-                child: Image.asset("assets/image_01.png"),
-              ),
-              Expanded(
-                child: Container(),
-              ),
-              Image.asset("assets/image_02.png")
-            ],
-          ),
+          Background(),
           SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.only(left: 28.0, right: 28.0, top: 60.0),
+              padding: EdgeInsets.only(left: 28.0, right: 28.0, top: 30.0),
               child: Column(
                 children: <Widget>[
 

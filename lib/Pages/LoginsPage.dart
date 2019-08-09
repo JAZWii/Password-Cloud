@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
 import 'package:password_cloud/Data/Pojo/ClassData/Login.dart';
 import 'package:password_cloud/Widgets/LoginListViewWidget.dart';
+import 'package:password_cloud/Widgets/Background.dart';
 
 import 'LoginEditPage.dart';
 
@@ -42,19 +43,7 @@ class _LoginsPage extends State<LoginsPage> {
         body: Stack(
             fit: StackFit.expand,
             children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(top: 20.0),
-                    child: Image.asset("assets/image_01.png"),
-                  ),
-                  Expanded(
-                    child: Container(),
-                  ),
-                  Image.asset("assets/image_02.png")
-                ],
-              ),
+              Background(),
               new LoginListViewWidget(),
             ]
         )

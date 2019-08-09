@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
+import 'package:password_cloud/Widgets/Background.dart';
 import 'package:password_cloud/Widgets/LoginWidget.dart';
 import 'ServicesPage.dart';
 import 'SignUpPage.dart';
@@ -51,27 +52,19 @@ class _SignInPage extends State<SignInPage> {
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1334, allowFontScaling: true);
     return new Scaffold(
+      appBar: AppBar(
+        title: const Text('Sign in to Password Cloud'),
+        backgroundColor:   Color(0xFFFD7267),
+      ),
       backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: true,
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 20.0),
-                child: Image.asset("assets/image_01.png"),
-              ),
-              Expanded(
-                child: Container(),
-              ),
-              Image.asset("assets/image_02.png")
-            ],
-          ),
+          Background(),
           SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.only(left: 28.0, right: 28.0, top: 60.0),
+              padding: EdgeInsets.only(left: 28.0, right: 28.0, top: 30.0),
               child: Column(
                 children: <Widget>[
 
@@ -94,7 +87,7 @@ class _SignInPage extends State<SignInPage> {
 
                   //Login Box
                   SizedBox(
-                    height: ScreenUtil.getInstance().setHeight(250),
+                    height: ScreenUtil.getInstance().setHeight(150),
                   ),
                   LoginWidget(),
 
@@ -184,7 +177,10 @@ class _SignInPage extends State<SignInPage> {
                                 fontFamily: "Poppins-Bold")),
                       )
                     ],
-                  )
+                  ),
+                  SizedBox(
+                    height: ScreenUtil.getInstance().setHeight(80),
+                  ),
                 ],
               ),
             ),
