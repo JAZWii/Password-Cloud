@@ -1,3 +1,4 @@
+import 'package:clipboard_manager/clipboard_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
 import 'package:password_cloud/Data/Pojo/ClassData/Address.dart';
@@ -28,42 +29,75 @@ class AddressViewPage extends StatelessWidget {
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1600, allowFontScaling: true);
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Address Info'),
-          backgroundColor: Color(0xFFFD7267),
-          actions: <Widget>[
-            // overflow menu
-            PopupMenuButton<int>(
-              itemBuilder: (context) =>
-              [
-                PopupMenuItem(
-                  value: 1,
-                  child: Text("Copy Address Info"),
-                ),
-                PopupMenuItem(
-                  value: 2,
-                  child: Text("modify Address"),
-                ),
-              ],
-              onSelected: (value) {
-                if (value == 1) {
+      home: MyStatelessWidget(address: this.address)
+    );
+  }
 
-                } else if (value == 2) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>
-                        AddressEditPage(address: this.address,)),
+
+}
+
+class MyStatelessWidget extends StatelessWidget {
+  final Address address;
+  BuildContext _scaffoldContext;
+
+  @override
+  MyStatelessWidget({Key key, @required this.address}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Address Info'),
+        backgroundColor: Color(0xFFFD7267),
+        actions: <Widget>[
+          // overflow menu
+          PopupMenuButton<int>(
+            itemBuilder: (context) =>
+            [
+              PopupMenuItem(
+                value: 1,
+                child: Text("Copy Address Info"),
+              ),
+              PopupMenuItem(
+                value: 2,
+                child: Text("modify Address"),
+              ),
+            ],
+            onSelected: (value) {
+              if (value == 1) {
+                ClipboardManager.copyToClipBoard(address.addressName + "\n"
+                    + address.address1 + "\n"
+                    + address.address2 + "\n"
+                    + address.city + "\n"
+                    + address.state + "\n"
+                    + address.zip + "\n"
+                    + address.country + "\n"
+                    + address.phone).then((result) {
+                  final snackBar = SnackBar(
+                    content: Text('Copied to Clipboard'),
+                    action: SnackBarAction(
+                      //label: 'Undo',
+                      //onPressed: () {},
+                    ),
                   );
-                }
-              },
-            ),
-          ],
-        ),
-        body: new Scaffold(
-          backgroundColor: Colors.white,
-          resizeToAvoidBottomPadding: true,
-          body: Stack(
+                  Scaffold.of(_scaffoldContext).showSnackBar(snackBar);
+                });
+              } else if (value == 2) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>
+                      AddressEditPage(address: this.address,)),
+                );
+              }
+            },
+          ),
+        ],
+      ),
+      backgroundColor: Colors.white,
+      resizeToAvoidBottomPadding: true,
+      body: Builder(
+        builder: (BuildContext context) {
+          _scaffoldContext = context;
+          return Stack(
             fit: StackFit.expand,
             children: <Widget>[
               Background(),
@@ -132,8 +166,8 @@ class AddressViewPage extends StatelessWidget {
                 ),
               )
             ],
-          ),
-        ),
+          );
+        },
       ),
     );
   }
@@ -178,4 +212,3 @@ class AddressViewPage extends StatelessWidget {
           ]
       );
 }
-
