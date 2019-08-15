@@ -31,7 +31,7 @@ class AddressViewPage extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Address Info'),
-          backgroundColor:   Color(0xFFFD7267),
+          backgroundColor: Color(0xFFFD7267),
           actions: <Widget>[
             // overflow menu
             PopupMenuButton<int>(
@@ -93,7 +93,7 @@ class AddressViewPage extends StatelessWidget {
 
                       new Container(
                         width: double.infinity,
-                        height: ScreenUtil.getInstance().setHeight(900),
+                        height: ScreenUtil.getInstance().setHeight(1300),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(8.0),
@@ -113,87 +113,20 @@ class AddressViewPage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-
+                              AddressRow("Address Name :", address.addressName),
+                              AddressRow("Address 1 :", address.address1),
+                              AddressRow("Address 2 :", address.address2),
+                              AddressRow("City :", address.city),
+                              AddressRow("State :", address.state),
+                              AddressRow("Zip code :", address.zip),
+                              AddressRow("Country :", address.country),
+                              AddressRow("Phone :", address.phone),
                               //Table viewer
-                              Table(
-                                  border: TableBorder(
-                                    horizontalInside: BorderSide(
-                                      color: Colors.black,
-                                      style: BorderStyle.solid,
-                                      width: 1.0,
-                                    ),
-                                    verticalInside: BorderSide(
-                                      color: Colors.black,
-                                      style: BorderStyle.solid,
-                                      width: 1.0,
-                                    ),
-                                    bottom: BorderSide(
-                                      color: Colors.black,
-                                      style: BorderStyle.solid,
-                                      width: 1.0,
-                                    ),
-                                    left: BorderSide(
-                                      color: Colors.black,
-                                      style: BorderStyle.solid,
-                                      width: 1.0,
-                                    ),
-                                    right: BorderSide(
-                                      color: Colors.black,
-                                      style: BorderStyle.solid,
-                                      width: 1.0,
-                                    ),
-                                    top: BorderSide(
-                                      color: Colors.black,
-                                      style: BorderStyle.solid,
-                                      width: 1.0,
-                                    ),
-                                  ),
-                                  children: [
-                                    TableRow(children: [
-                                      Text("Address Name :"),
-                                      Text(address.addressName, softWrap: true,
-                                        textAlign: TextAlign.center,),
-                                    ]),
-                                    TableRow(children: [
-                                      Text("Address 1 :"),
-                                      Text(address.address1, softWrap: true,
-                                        textAlign: TextAlign.center,),
-                                    ]),
-                                    TableRow(children: [
-                                      Text("Address 1 :"),
-                                      Text(address.address2, softWrap: true,
-                                        textAlign: TextAlign.center,),
-                                    ]),
-                                    TableRow(children: [
-                                      Text("City :"),
-                                      Text(address.city, softWrap: true,
-                                        textAlign: TextAlign.center,),
-                                    ]),
-                                    TableRow(children: [
-                                      Text("State :",),
-                                      Text(address.state, softWrap: true,
-                                        textAlign: TextAlign.center,),
-                                    ]),
-                                    TableRow(children: [
-                                      Text("Zip code :"),
-                                      Text(address.zip, softWrap: true,
-                                        textAlign: TextAlign.center,),
-                                    ]),
-                                    TableRow(children: [
-                                      Text("Country :"),
-                                      Text(address.country, softWrap: true,
-                                        textAlign: TextAlign.center,),
-                                    ]),
-                                    TableRow(children: [
-                                      Text("Phone :"),
-                                      Text(address.phone, softWrap: true,
-                                        textAlign: TextAlign.center,),
-                                    ]),
-                                  ]),
                             ],
                           ),
                         ),
-                      )
+                      ),
+                      SizedBox(height: ScreenUtil.getInstance().setHeight(50)),
                     ],
                   ),
                 ),
@@ -204,4 +137,45 @@ class AddressViewPage extends StatelessWidget {
       ),
     );
   }
+
+  Widget AddressRow(String title, String content) =>
+      new Column(
+          children: [
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                new Column (
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Color(0xFF000000),
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                      SizedBox(height: ScreenUtil.getInstance().setHeight(50)),
+                    ]
+                ),
+                new Column (
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      SizedBox(height: ScreenUtil.getInstance().setHeight(50)),
+                      Text(
+                        content,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Color(0xFFFD7267),
+                          fontStyle: FontStyle.italic,
+                        ),
+                      )
+                    ]
+                )
+              ],
+            ),
+            SizedBox(height: ScreenUtil.getInstance().setHeight(50)),
+          ]
+      );
 }
+

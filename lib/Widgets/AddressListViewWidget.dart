@@ -11,12 +11,12 @@ class AddressListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    userAddresses.add(new Address.fromList(1, "US Aramex", "Jawad Almarhoon", "Al Anwar", "2332", "Qatif", "Eastern Province", "32651", "0504742521", "Uinted States", new DateTime(10000000000)));
-    userAddresses.add(new Address.fromList(2, "US DHL", "Jawad Almarhoon", "Al Anwar", "2332", "Qatif", "Eastern Province", "32651", "0504742521", "Uinted States", new DateTime(10000000000)));
-    userAddresses.add(new Address.fromList(3, "US UPS", "Jawad Almarhoon", "Al Anwar", "2332", "Qatif", "Eastern Province", "32651", "0504742521", "Uinted States", new DateTime(10000000000)));
-    userAddresses.add(new Address.fromList(4, "US Wasil", "Jawad Almarhoon", "Al Anwar", "2332", "Qatif", "Eastern Province", "32651", "0504742521", "Uinted States", new DateTime(10000000000)));
-    userAddresses.add(new Address.fromList(5, "US FedEx", "Jawad Almarhoon", "Al Anwar", "2332", "Qatif", "Eastern Province", "32651", "0504742521", "Uinted States", new DateTime(10000000000)));
-    userAddresses.add(new Address.fromList(6, "US China", "Jawad Almarhoon", "Al Anwar", "2332", "Qatif", "Eastern Province", "32651", "0504742521", "Uinted States", new DateTime(10000000000)));
+    userAddresses.add(new Address(id: 1, addressName:"US Aramex", fullName:"Jawad Almarhoon", address1:"Al Anwar", address2:"2332", city:"Qatif", state:"Eastern Province", zip:"32651", phone:"0504742521", country:"Uinted States", createDate:new DateTime(10000000000)));
+    userAddresses.add(new Address(id: 2, addressName:"US DHL",    fullName:"Jawad Almarhoon", address1:"Al Anwar", address2:"2332", city:"Qatif", state:"Eastern Province", zip:"32651", phone:"0504742521", country:"Uinted States", createDate:new DateTime(10000000000)));
+    userAddresses.add(new Address(id: 3, addressName:"US UPS",    fullName:"Jawad Almarhoon", address1:"Al Anwar", address2:"2332", city:"Qatif", state:"Eastern Province", zip:"32651", phone:"0504742521", country:"Uinted States", createDate:new DateTime(10000000000)));
+    userAddresses.add(new Address(id: 4, addressName:"US Wasil",  fullName:"Jawad Almarhoon", address1:"Al Anwar", address2:"2332", city:"Qatif", state:"Eastern Province", zip:"32651", phone:"0504742521", country:"Uinted States", createDate:new DateTime(10000000000)));
+    userAddresses.add(new Address(id: 5, addressName:"US FedEx",  fullName:"Jawad Almarhoon", address1:"Al Anwar", address2:"2332", city:"Qatif", state:"Eastern Province", zip:"32651", phone:"0504742521", country:"Uinted States", createDate:new DateTime(10000000000)));
+    userAddresses.add(new Address(id: 6, addressName:"US China",  fullName:"Jawad Almarhoon", address1:"Al Anwar", address2:"2332", city:"Qatif", state:"Eastern Province", zip:"32651", phone:"0504742521", country:"Uinted States", createDate:new DateTime(10000000000)));
     // the Expanded widget lets the columns share the space
 
     return ListView.builder(
@@ -33,7 +33,7 @@ class AddressListViewWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         ListTile(
-                          leading: Icon(Icons.wb_sunny),
+                          leading: Icon(Icons.home),
                           title: Text(userAddresses[index].addressName),
                           subtitle: Text(userAddresses[index].country),
                           trailing: Icon(Icons.keyboard_arrow_right),

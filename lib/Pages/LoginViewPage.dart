@@ -30,7 +30,7 @@ class LoginViewPage extends StatelessWidget {
     return new Scaffold(
       appBar: AppBar(
         title: const Text('Login Info'),
-        backgroundColor:   Color(0xFFFD7267),
+        backgroundColor: Color(0xFFFD7267),
         actions: <Widget>[
           // overflow menu
           PopupMenuButton<int>(
@@ -112,28 +112,11 @@ class LoginViewPage extends StatelessWidget {
                             children: <Widget>[
 
                               //Table viewer
-                              Table(children: [
-                                TableRow(children: [
-                                  Text("Login Name :"),
-                                  Text(login.loginName),
-                                ]),
-                                TableRow(children: [
-                                  Text("Login Email :"),
-                                  Text(login.email),
-                                ]),
-                                TableRow(children: [
-                                  Text("Login Username :"),
-                                  Text(login.username),
-                                ]),
-                                TableRow(children: [
-                                  Text("Login Website :"),
-                                  Text(login.website),
-                                ]),
-                                TableRow(children: [
-                                  Text("Login Password :"),
-                                  Text(login.password),
-                                ]),
-                              ])
+                              LoginRow("Login Name :", login.loginName),
+                              LoginRow("Login Email :", login.email),
+                              LoginRow("Login Username :", login.username),
+                              LoginRow("Login Website :", login.website),
+                              LoginRow("Login Password :", login.password),
                             ]
                         ),
                       )
@@ -146,4 +129,44 @@ class LoginViewPage extends StatelessWidget {
       ),
     );
   }
+
+  Widget LoginRow(String title, String content) =>
+      new Column(
+          children: [
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                new Column (
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Color(0xFF000000),
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+   SizedBox(height: ScreenUtil.getInstance().setHeight(50)),
+  ]
+                ),
+                new Column (
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      SizedBox(height: ScreenUtil.getInstance().setHeight(50)),
+                      Text(
+                        content,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Color(0xFFFD7267),
+                          fontStyle: FontStyle.italic,
+                        ),
+                      )
+                    ]
+                )
+              ],
+            ),
+            SizedBox(height: ScreenUtil.getInstance().setHeight(50)),
+          ]
+      );
 }

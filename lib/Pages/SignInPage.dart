@@ -110,7 +110,7 @@ class _SignInPage extends State<SignInPage> {
                           ),
                           Text("Remember me",
                               style: TextStyle(
-                                  fontSize: 12, fontFamily: "Poppins-Medium"))
+                                  fontSize: 14, fontFamily: "Poppins-Medium"))
                         ],
                       ),
                       InkWell(

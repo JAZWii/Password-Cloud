@@ -6,26 +6,35 @@ class Background extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
-      body: Column(
+      body: Stack(
+        fit: StackFit.expand,
         children: <Widget>[
-          new Stack(
-            alignment: Alignment.bottomCenter,
-            children: <Widget>[
-              Image.asset('assets/cloud.png', width: MediaQuery.of(context).size.width/1.5,),
-              WavyHeader(),
-            ],
-          ),
-          Expanded(
-            child: Container(
+          Container(
+            alignment: Alignment.topLeft,
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: <Widget>[
+                Image.asset(
+                  'assets/cloud.png',
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width / 1.5,
+                ),
+                WavyHeader(),
+              ],
             ),
           ),
-          Stack(
-            alignment: Alignment.bottomLeft,
-            children: <Widget>[
-              WavyFooter(),
-              CirclePink(),
-              CircleYellow(),
-            ],
+          Container(
+            alignment: Alignment.bottomCenter,
+            child: Stack(
+              alignment: Alignment.bottomLeft,
+              children: <Widget>[
+                WavyFooter(),
+                CirclePink(),
+                CircleYellow(),
+              ],
+            ),
           )
         ],
       ),
@@ -56,7 +65,10 @@ class WavyHeader extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.center),
         ),
-        height: MediaQuery.of(context).size.height / 2.5,
+        height: MediaQuery
+            .of(context)
+            .size
+            .height / 2.5,
       ),
     );
   }
@@ -98,7 +110,7 @@ class CircleYellow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Transform.translate(
-      offset: Offset(0.0, 180.0),
+      offset: Offset(0.0, 210.0),
       child: Material(
         color: Colors.yellow,
         child: Padding(padding: EdgeInsets.all(120)),

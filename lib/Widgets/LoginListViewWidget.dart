@@ -11,12 +11,12 @@ class LoginListViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    userLogins.add(new Login.fromList(1, "Steam", "www.steam.com", "jazwii@yahoo.com", "JAZWii", "jojomojo", new DateTime(10000000000)));
-    userLogins.add(new Login.fromList(2, "Twitch", "www.twitch.com", "jazwii@yahoo.com", "JAZWii", "jojomojo", new DateTime(10000000000)));
-    userLogins.add(new Login.fromList(3, "Battle.net", "www.battel.net", "jazwii@yahoo.com", "JAZWii", "jojomojo", new DateTime(10000000000)));
-    userLogins.add(new Login.fromList(4, "UPlay", "www.uplay.com", "jazwii@yahoo.com", "JAZWii", "jojomojo", new DateTime(10000000000)));
-    userLogins.add(new Login.fromList(5, "EA", "www.ea.com", "jazwii@yahoo.com", "JAZWii", "jojomojo", new DateTime(10000000000)));
-    userLogins.add(new Login.fromList(6, "GE", "www.ge.com", "jazwii@yahoo.com", "JAZWii", "jojomojo", new DateTime(10000000000)));
+    userLogins.add(new Login(id:1, loginName:"Steam", website:"www.steam.com", email:"jazwii@yahoo.com", username:"JAZWii", password: "jojomojo",createDate: new DateTime(10000000000)));
+    userLogins.add(new Login(id:2, loginName:"Twitch", website:"www.twitch.com", email:"jazwii@yahoo.com", username:"JAZWii", password:"jojomojo",createDate: new DateTime(10000000000)));
+    userLogins.add(new Login(id:3, loginName:"Battle.net", website:"www.battel.net", email:"jazwii@yahoo.com", username:"JAZWii", password:"jojomojo", createDate:new DateTime(10000000000)));
+    userLogins.add(new Login(id:4, loginName:"UPlay", website:"www.uplay.com", email:"jazwii@yahoo.com", username:"JAZWii", password:"jojomojo", createDate:new DateTime(10000000000)));
+    userLogins.add(new Login(id:5, loginName:"EA", website:"www.ea.com", email:"jazwii@yahoo.com", username:"JAZWii", password:"jojomojo", createDate:new DateTime(10000000000)));
+    userLogins.add(new Login(id:6, loginName:"GE", website:"www.ge.com", email:"jazwii@yahoo.com", username:"JAZWii", password:"jojomojo", createDate:new DateTime(10000000000)));
     // the Expanded widget lets the columns share the space
 
     return ListView.builder(
@@ -33,7 +33,7 @@ class LoginListViewWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         ListTile(
-                          leading: Icon(Icons.wb_sunny),
+                          leading: Icon(Icons.lock),
                           title: Text(userLogins[index].loginName),
                           subtitle: Text(userLogins[index].website),
                           trailing: Icon(Icons.keyboard_arrow_right),
