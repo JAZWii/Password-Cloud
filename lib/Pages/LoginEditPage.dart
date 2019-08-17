@@ -6,6 +6,7 @@ import 'package:password_cloud/Widgets/Background.dart';
 
 class LoginEditPage extends StatelessWidget {
   final Login login;
+
   @override
   LoginEditPage({Key key, @required this.login}) : super(key: key);
 
@@ -25,89 +26,94 @@ class LoginEditPage extends StatelessWidget {
       ..init(context);
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1300, allowFontScaling: true);
-    return new Scaffold(
-      appBar: AppBar(
-        title: const Text('Login Info'),
-        backgroundColor:   Color(0xFFFD7267),
-      ),
-      backgroundColor: Colors.white,
-      resizeToAvoidBottomPadding: true,
-      body: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Background(),
-          SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(left: 28.0, right: 28.0, top: 30.0),
-              child: Column(
-                children: <Widget>[
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Login Info'),
+          backgroundColor: Color(0xFFFD7267),
+        ),
+        backgroundColor: Colors.white,
+        resizeToAvoidBottomPadding: true,
+        body: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            Background(),
+            SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.only(left: 28.0, right: 28.0, top: 30.0),
+                child: Column(
+                  children: <Widget>[
 
-                  //Icon
-                  Row(
-                    children: <Widget>[
-                      Image.asset(
-                        "assets/logo.png",
-                        width: ScreenUtil.getInstance().setWidth(110),
-                        height: ScreenUtil.getInstance().setHeight(110),
-                      ),
-                      Text("LOGO",
-                          style: TextStyle(
-                              fontFamily: "Poppins-Bold",
-                              fontSize: ScreenUtil.getInstance().setSp(46),
-                              letterSpacing: .6,
-                              fontWeight: FontWeight.bold))
-                    ],
-                  ),
-                  SizedBox(height: ScreenUtil.getInstance().setHeight(50)),
-                  LoginEditWidget(login: this.login),
+                    //Icon
+                    Row(
+                      children: <Widget>[
+                        Image.asset(
+                          "assets/logo.png",
+                          width: ScreenUtil.getInstance().setWidth(110),
+                          height: ScreenUtil.getInstance().setHeight(110),
+                        ),
+                        Text("LOGO",
+                            style: TextStyle(
+                                fontFamily: "Poppins-Bold",
+                                fontSize: ScreenUtil.getInstance().setSp(46),
+                                letterSpacing: .6,
+                                fontWeight: FontWeight.bold))
+                      ],
+                    ),
+                    SizedBox(height: ScreenUtil.getInstance().setHeight(50)),
+                    LoginEditWidget(login: this.login),
 
-                  //
-                  SizedBox(
-                    height: ScreenUtil.getInstance().setHeight(50),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      InkWell(
-                        child: Container(
-                          width: ScreenUtil.getInstance().setWidth(600),
-                          height: ScreenUtil.getInstance().setHeight(100),
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(colors: [
-                                Color(0xFF17ead9),
-                                Color(0xFF6078ea)
-                              ]),
-                              borderRadius: BorderRadius.circular(6.0),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Color(0xFF6078ea).withOpacity(.3),
-                                    offset: Offset(0.0, 8.0),
-                                    blurRadius: 8.0)
-                              ]),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                              child: Center(
-                                child: Text((this.login.id == null)? "CREATE LOGIN":"MODIFY LOGIN",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: "Poppins-Bold",
-                                        fontSize: 18,
-                                        letterSpacing: 1.0)),
+                    //
+                    SizedBox(
+                      height: ScreenUtil.getInstance().setHeight(50),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        InkWell(
+                          child: Container(
+                            width: ScreenUtil.getInstance().setWidth(600),
+                            height: ScreenUtil.getInstance().setHeight(100),
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(colors: [
+                                  Color(0xFF17ead9),
+                                  Color(0xFF6078ea)
+                                ]),
+                                borderRadius: BorderRadius.circular(6.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Color(0xFF6078ea).withOpacity(.3),
+                                      offset: Offset(0.0, 8.0),
+                                      blurRadius: 8.0)
+                                ]),
+                            child: Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                onTap: () {},
+                                child: Center(
+                                  child: Text((this.login.id == null)
+                                      ? "CREATE LOGIN"
+                                      : "MODIFY LOGIN",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontFamily: "Poppins-Bold",
+                                          fontSize: 18,
+                                          letterSpacing: 1.0)),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: ScreenUtil.getInstance().setHeight(40)),
-                ],
+                        )
+                      ],
+                    ),
+                    SizedBox(height: ScreenUtil.getInstance().setHeight(40)),
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
