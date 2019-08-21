@@ -3,11 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtil;
 import 'package:password_cloud/Data/Pojo/ClassData/Login.dart';
 import 'package:password_cloud/Widgets/Background.dart';
 
-class PasswordViewerPage extends StatelessWidget {
+import 'ChangePasswordPage.dart';
+
+class PasswordViewerPage extends StatefulWidget {
   final Login login;
 
   @override
   PasswordViewerPage({Key key, @required this.login}) : super(key: key);
+
+  @override
+    _PasswordViewerPage createState() => new _PasswordViewerPage();
+}
+
+class _PasswordViewerPage extends State<PasswordViewerPage> {
+  bool visibility = true;
 
   Widget horizontalLine() =>
       Padding(
@@ -25,17 +34,193 @@ class PasswordViewerPage extends StatelessWidget {
       ..init(context);
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1600, allowFontScaling: true);
+
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+            appBar: AppBar(
+              title: const Text('Password Display'),
+              backgroundColor: Color(0xFFFD7267),
+              actions: <Widget>[
+                // overflow menu
+                PopupMenuButton<int>(
+                  itemBuilder: (context) =>
+                  [
+                    PopupMenuItem(
+                      value: 1,
+                      child: Text("Change Password"),
+                    ),
+                  ],
+                  onSelected: (value) {
+                    if (value == 1) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ChangePasswordPage(login: this.widget.login,)),
+                      );
+                    }
+                  },
+                ),
+              ],
+            ),
             body: Stack(
               fit: StackFit.expand,
               children: <Widget>[
                 Background(),
+                Padding(
+                  padding: EdgeInsets.only(left: 28.0, right: 28.0, top: 30.0),
+                  child: Column(
+                    children: <Widget>[
 
+                      //Icon
+                      Row(
+                        children: <Widget>[
+                          Image.asset(
+                            "assets/logo.png",
+                            width: ScreenUtil.getInstance().setWidth(110),
+                            height: ScreenUtil.getInstance().setHeight(110),
+                          ),
+                          Text("LOGO",
+                              style: TextStyle(
+                                  fontFamily: "Poppins-Bold",
+                                  fontSize: ScreenUtil.getInstance().setSp(46),
+                                  letterSpacing: .6,
+                                  fontWeight: FontWeight.bold))
+                        ],
+                      ),
+                      SizedBox(
+                          height: ScreenUtil.getInstance().setHeight(ScreenUtil
+                              .getInstance()
+                              .height / 4)),
+
+                      //Password Display
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Stack(
+                            fit: StackFit.passthrough,
+                            children: <Widget>[
+                              InkWell(
+                                child: Container(
+                                  width: ScreenUtil.getInstance().setWidth(600),
+                                  height: ScreenUtil.getInstance().setHeight(
+                                      200),
+                                  decoration: BoxDecoration(
+                                      gradient: LinearGradient(colors: [
+                                        Color(0xFF17ead9),
+                                        Color(0xFF6078ea)
+                                      ]),
+                                      borderRadius: BorderRadius.circular(6.0),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Color(0xFF6078ea)
+                                                .withOpacity(
+                                                .3),
+                                            offset: Offset(0.0, 8.0),
+                                            blurRadius: 8.0)
+                                      ]),
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: InkWell(
+                                      child: Center(
+                                        child: Text(this.widget.login.password,
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                            color: Color(0xFF17ead9),
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              if(visibility)
+                                SpoilerColor(),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                          height: ScreenUtil.getInstance().setHeight(ScreenUtil
+                              .getInstance()
+                              .height / 4)),
+
+                      //Show Password button
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          InkWell(
+                            child: Container(
+                              width: ScreenUtil.getInstance().setWidth(600),
+                              height: ScreenUtil.getInstance().setHeight(100),
+                              decoration: BoxDecoration(
+                                  gradient: LinearGradient(colors: [
+                                    Color(0xFF17ead9),
+                                    Color(0xFF6078ea)
+                                  ]),
+                                  borderRadius: BorderRadius.circular(6.0),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Color(0xFF6078ea).withOpacity(
+                                            .3),
+                                        offset: Offset(0.0, 8.0),
+                                        blurRadius: 8.0)
+                                  ]),
+                              child: Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  onTap: () {
+                                      setState(() =>visibility = false);
+                                  },
+                                  child: Center(
+                                    child: Text("SHOW PASSWORD",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: "Poppins-Bold",
+                                            fontSize: 18,
+                                            letterSpacing: 1.0)),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: ScreenUtil.getInstance().setHeight(50)),
+
+                    ],
+                  ),
+                ),
               ],
             )
         )
     );
   }
+
+  static Widget SpoilerColor ()=>
+      new InkWell(
+        child: Container(
+          width: ScreenUtil.getInstance().setWidth(600),
+          height: ScreenUtil.getInstance().setHeight(
+              200),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [
+                Color(0xFF000000),
+                Color(0xFFFFFFFF)
+              ]),
+              borderRadius: BorderRadius.circular(6.0),
+              boxShadow: [
+                BoxShadow(
+                    color: Color(0xFF6078ea)
+                        .withOpacity(
+                        .3),
+                    offset: Offset(0.0, 8.0),
+                    blurRadius: 8.0)
+              ]),
+        ),
+      );
+
+
 }

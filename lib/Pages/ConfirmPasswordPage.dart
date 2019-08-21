@@ -5,9 +5,9 @@ import 'package:password_cloud/Widgets/Background.dart';
 
 class ConfirmPasswordPage extends StatelessWidget {
   final Login login;
-
+  final String newPassword;
   @override
-  ConfirmPasswordPage({Key key, @required this.login}) : super(key: key);
+  ConfirmPasswordPage({Key key, @required this.login, @required this.newPassword}) : super(key: key);
 
   Widget horizontalLine() =>
       Padding(
