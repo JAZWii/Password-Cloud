@@ -1,9 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'APIException.g.dart';
-
 @JsonSerializable()
-class APIException{
+class APIException {
   @JsonKey(name: "title")
   String title;
 
@@ -12,6 +10,7 @@ class APIException{
 
   APIException(this.title, this.errors);
 
-  factory APIException.fromJson(Map < String, dynamic > json) => _$APIExceptionFromJson(json);
-  Map<String, dynamic> toJson() => _$APIExceptionToJson(this);
+  factory APIException.fromJson(Map<String, dynamic> json) =>
+      null; //_$APIExceptionFromJson(json);
+  Map<String, dynamic> toJson() => null; //_$APIExceptionToJson(this);
 }

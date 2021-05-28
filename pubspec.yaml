@@ -31,7 +31,7 @@ dependencies:
   json_annotation: ^2.0.0
   http: ^0.12.0
   clipboard_manager: ^0.0.4
-  intl: ^0.15.7
+  intl: ^0.16.1
   share: ^0.5.3
   uuid: ^2.0.0
   shared_preferences: ^0.4.3
@@ -42,7 +42,7 @@ dev_dependencies:
   # Your other dev_dependencies here
   build_runner: ^1.0.0
   json_serializable: ^2.0.0
-  
+
   flutter_test:
     sdk: flutter
 

@@ -1,13 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'AccountForm.g.dart';
-
 @JsonSerializable()
-class AccountForm{
-  AccountForm(
+class AccountForm {
+  AccountForm();
 
-  );
-
-  factory AccountForm.fromJson(Map < String, dynamic > json) => _$AccountFormFromJson(json);
-  Map<String, dynamic> toJson() => _$AccountFormToJson(this);
+  factory AccountForm.fromJson(Map<String, dynamic> json) =>
+      null; //_$AccountFormFromJson(json);
+  Map<String, dynamic> toJson() => null; //_$AccountFormToJson(this);
 }
